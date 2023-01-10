@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Table</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+        crossorigin="anonymous">
+    <!-- icon link -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="./style.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous">
+        </script>
+    <!-- jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="./table.js"></script>
+
+    </script>
+</head>
+
+<body>
+    <div class="container shadow mt-5">
+        <nav class="navbar navbar-expand-lg navbar-dark nav mt-5" style="background-color:#485c7c">
+            <div class="navbar-brand">Manage
+                <b>Employees</b>
+            </div>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+
+                </ul>
+                <form class="form-inline my-2 my-lg-0">
+
+                    <button type="button" id="add" class="btn btn-success">
+                        <i class="bi bi-plus-circle-fill mr-1"></i>Add New Employee</button>
+                </form>
+            </div>
+        </nav>
+        <table id="dtBasicExample" class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Mobile Number</th>
+                    <th scope="col">country</th>
+                </tr>
+            </thead>
+            <tbody id="tbody">
+                <tr>
+                    <td>Thomas Hardy</td>
+                    <td>thomashardy@mail.com</td>
+                    <td>(171) 555-2222</td>
+                    <td>89 Chiaroscuro Rd, Portland, USA</td>
+                </tr>
+                <tr>
+                    <td>Dominique Perrier</td>
+                    <td>dominiqueperrier@mail.com</td>
+                    <td>(313) 555-5735</td>
+                    <td>Obere Str. 57, Berlin, Germany</td>
+                </tr>
+                <tr>
+                    <td>Maria Anders</td>
+                    <td>mariaanders@mail.com</td>
+                    <td>(503) 555-9931</td>
+                    <td>25, rue Lauriston, Paris, France</td>
+                </tr>
+                <tr>
+                    <td>Fran Wilson</td>
+                    <td>franwilson@mail.com</td>
+                    <td>(204) 619-5731</td>
+                    <td>C/ Araquil, 67, Madrid, Spain</td>
+                </tr>
+                
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>
