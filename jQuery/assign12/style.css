@@ -1,0 +1,17 @@
+.containers{
+    height:20%;
+}
+.box{
+    width:45%;
+    height: 380PX;
+    justify-content: center;
+    border-radius: 2%;
+    margin:10% 0 10% 0;
+}
+.clock{
+    /* background-color:#625770; */
+    padding:10% 10% 10% 25%;
+    box-shadow: -1px 0px 30px -2px;
+    font-size:40px;
+    color: rgb(15, 14, 14);
+}
