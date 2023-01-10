@@ -1,0 +1,16 @@
+.icon-red {
+    color: red;
+  }
+.icon-yellow {
+    color:rgb(241, 206, 7);
+  }
+p{
+    color:white;
+}
+.pointer {cursor: pointer;}
+.nav{
+    color: #485c7c
+}
+a.color{
+    color:#087cfc;
+}
