@@ -1,0 +1,18 @@
+.containers{
+    height:20%;
+}
+.box{
+    width:50%;
+    height: 100PX;
+    /* background-color:#293f50; */
+    border:1px solid lightslategray;
+    justify-content: center;
+    border-radius: 2%;
+    margin:10% 0 10% 0;
+}
+body{
+    /* background-color: aqua; */
+}
+button{
+    color: #34495E ;
+}
