@@ -1,0 +1,11 @@
+/* input[type="checkbox"]:checked{
+    background-color:rgb(255, 0, 0);  
+} */
+
+/* .box{
+    background-color: blue;
+} */
+
+.box:input ~ .checkmark {
+    background-color: #ccc;
+  }
