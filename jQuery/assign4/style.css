@@ -1,3 +1,16 @@
 .containers{
     height:20%;
 }
+
+
+
+
+SELECT Products.ProductID,
+		Products.Name as 'Product name' ,
+		Customers.Name as 'Customer Name',
+		[OrderItemID]
+  FROM [dbo].[OrderItems] join Orders on OrderItems.OrderID=Orders.OrderID join Customers on Orders.CustomerID = Customers.CustomerID 
+  join ProductSuppliers on OrderItems.ProductSupplierID = ProductSuppliers.ProductSupplierID 
+  join Products on ProductSuppliers.ProductID = Products.ProductID where Products.ProductID in (40,316,427,331) and OrderDate between DATEADD("M",-6,GETDATE()) AND GETDATE();     
+
+GO
