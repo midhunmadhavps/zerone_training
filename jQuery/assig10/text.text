@@ -1,1 +1,10 @@
 
+SELECT Count(Products.ProductID) as 'Products'
+      ,min(Suppliers.Name) as 'Supplier Name'
+	  ,min(Products.Name) as 'Product Name'
+	  ,Count([ProductSupplierID]) as 'Count'
+  FROM [dbo].[ProductSuppliers]
+   join Products on ProductSuppliers.ProductID = Products.ProductID
+   join Suppliers on ProductSuppliers.SupplierID = Suppliers.SupplierID
+   group by Products.ProductId
+   having Count([ProductSupplierID])>1
