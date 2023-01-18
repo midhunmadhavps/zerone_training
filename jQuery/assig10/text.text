@@ -8,3 +8,17 @@ SELECT Count(Products.ProductID) as 'Products'
    join Suppliers on ProductSuppliers.SupplierID = Suppliers.SupplierID
    group by Products.ProductId
    having Count([ProductSupplierID])>1
+
+
+
+
+SELECT MIN(Products.Name) as 'Product Name'
+      ,Count(OrderItems.Quantity) as 'Total Orders'
+  FROM [dbo].[ProductSuppliers]
+   join OrderItems on ProductSuppliers.ProductSupplierID = OrderItems.ProductSupplierID
+   join Orders on OrderItems.OrderID = Orders.OrderID
+   join Products on ProductSuppliers.ProductId = Products.ProductID
+   where OrderDate between DATEADD("m",-6,GETDATE()) and GETDATE()
+   group by Products.ProductID
+   order by 'Total Orders' desc
+GO
