@@ -22,3 +22,13 @@ SELECT MIN(Products.Name) as 'Product Name'
    group by Products.ProductID
    order by 'Total Orders' desc
 GO
+
+
+
+ass- 33
+ 
+Select max(Shipments.CourierCompany) as CourierCompany,
+avg(datediff(DAY,Shipments.ShipmentDate,.Shipments.DeliveryDate)) as AverageDate  from Shipments
+where DeliveryDate between DATEADD("m",-6, GETDATE()) and GETDATE() and DeliveryDate is not null
+group by CourierCompany
+order by CourierCompany
