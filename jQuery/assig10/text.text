@@ -32,7 +32,28 @@ avg(datediff(DAY,Shipments.ShipmentDate,.Shipments.DeliveryDate)) as AverageDate
 where DeliveryDate between DATEADD("m",-6, GETDATE()) and GETDATE() and DeliveryDate is not null
 group by CourierCompany
 order by CourierCompany
+ 
+ 
+ Ass -19
+ Select 
+	   Suppliers.SupplierID,
+	   Suppliers.Name as 'Supplier Name',
+	   OrderItems.OrderItemID,
+	   Orders.OrderDate
+	   ExpectedDeliveryDate,
+	   Shipments.DeliveryDate
+	   
+From OrderItems
+join Orders on OrderItems.OrderID = Orders.OrderID
+Join ProductSuppliers on OrderItems.ProductSupplierID = ProductSuppliers.ProductSupplierID
+join Suppliers on ProductSuppliers.SupplierID = Suppliers.SupplierID
+join ShipmentItems on OrderItems.OrderItemID = ShipmentItems.OrderItemID
+join Shipments on ShipmentItems.ShipmentID = Shipments.ShipmentID
 
+where ExpectedDeliveryDate between DATEADD("m",-6,Getdate()) and GETDATE() and ExpectedDeliveryDate != DeliveryDate and Suppliers.SupplierID = 21
+ 
+
+ 
 
 
 
@@ -50,3 +71,31 @@ SELECT min(Products.Name) as 'Product name',
   join Shipments on ShipmentItems.ShipmentID = Shipments.ShipmentID 
   where Shipments.DeliveryDate between DATEADD("M",-6,GETDATE()) AND GETDATE() and Suppliers.SupplierID = 78
   group by Products.name order by  min(Products.Name) 
+
+
+ass 23
+Here, take some customer id from orders table and hard-code that in the query
+SELECT Customers.CustomerID
+       ,Products.Name as 'Product_Name',
+	   Products.Rate,
+	   OrderItems.Quantity
+  FROM [dbo].[Customers] join orders on Customers.CustomerID = orders.CustomerID
+  join OrderItems on Orders.OrderID = OrderItems.OrderID
+  join ProductSuppliers on OrderItems.ProductSupplierID = ProductSuppliers.ProductSupplierID
+  join Products on ProductSuppliers.ProductID = Products.ProductID 
+  where OrderDate between DATEADD("M", -6, GETDATE()) AND GETDATE() and Customers.CustomerID in (1,2,8)
+
+
+ass 24
+SELECT Orders.CustomerID,
+       Products.ProductID,
+       Products.Name as 'Product_Name',
+	   ShipmentItems.CustomerRating
+	   
+  FROM [dbo].[Customers] join orders on Customers.CustomerID = orders.CustomerID
+  join OrderItems on Orders.OrderID = OrderItems.OrderID
+  join ProductSuppliers on OrderItems.ProductSupplierID = ProductSuppliers.ProductSupplierID
+  join Products on ProductSuppliers.ProductID = Products.ProductID 
+  join ShipmentItems on OrderItems.OrderItemID = ShipmentItems.OrderItemID
+  join Shipments on ShipmentItems.ShipmentID = Shipments.ShipmentID
+  where  DeliveryDate between DATEADD("M", -6, GETDATE()) AND GETDATE() and Orders.CustomerID in (1,2,18) and Products.ProductID =206 
