@@ -32,3 +32,21 @@ avg(datediff(DAY,Shipments.ShipmentDate,.Shipments.DeliveryDate)) as AverageDate
 where DeliveryDate between DATEADD("m",-6, GETDATE()) and GETDATE() and DeliveryDate is not null
 group by CourierCompany
 order by CourierCompany
+
+
+
+
+
+ass39sql
+
+
+
+SELECT min(Products.Name) as 'Product name',
+      avg(ShipmentItems.CustomerRating) AS 'Average rating' 
+  FROM [dbo].[OrderItems] join ProductSuppliers on OrderItems.ProductSupplierID =  ProductSuppliers.ProductSupplierID
+  join Products ON ProductSuppliers.ProductID =Products.ProductID  
+  join Suppliers on ProductSuppliers.SupplierID = Suppliers.SupplierID 
+  join ShipmentItems on OrderItems.OrderItemID = ShipmentItems.OrderItemID
+  join Shipments on ShipmentItems.ShipmentID = Shipments.ShipmentID 
+  where Shipments.DeliveryDate between DATEADD("M",-6,GETDATE()) AND GETDATE() and Suppliers.SupplierID = 78
+  group by Products.name order by  min(Products.Name) 
