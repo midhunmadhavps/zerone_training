@@ -127,3 +127,20 @@ SELECT Orders.CustomerID,
   FROM [dbo].[Orders] join Employees on Orders.EmployeeID = Employees.EmployeeID where Orders.IsClosed = 0  group by Employees.EmployeeID
   order by  count([OrderID])
 
+
+ass- 22
+
+select Suppliers.SupplierID,Suppliers.Name as SupplierName,OrderItems.OrderItemID,OrderDate,ShipmentDate,
+
+maxi = datediff(dd,Orders.OrderDate,Shipments.ShipmentDate)  from ShipmentItems
+
+join Shipments on ShipmentItems.ShipmentID = Shipments.ShipmentID
+join OrderItems on OrderItems.OrderItemID = ShipmentItems.OrderItemID
+join Orders on OrderItems.OrderID = Orders.OrderID
+join ProductSuppliers on ProductSuppliers.ProductSupplierID = OrderItems.ProductSupplierID
+join Suppliers on ProductSuppliers.SupplierID = Suppliers.SupplierID
+
+where  OrderDate between dateadd("m", -6,getdate()) and getdate()
+and Suppliers.SupplierID = 17 order by maxi desc
+
+
