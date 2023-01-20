@@ -1,0 +1,31 @@
+.wid{
+	width:100%;
+	border-color:lightgrey;
+}
+.wids{
+	border-color:lightgrey;
+}
+selwid{
+	width:15%;
+}
+.capitalise {
+	text-transform: uppercase;
+  }
+
+  .required:after {
+    content:"*";color:red;
+	padding:2%;
+	/* font-weight:bold; */
+  } 
+label{
+	font-weight: bold;
+}
+.d-none {
+	display: none!important;
+  }
+  .card-header{
+	background-color:pink;
+}
+.card-body{
+  background-color:pink;
+}
