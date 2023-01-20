@@ -32,6 +32,20 @@ avg(datediff(DAY,Shipments.ShipmentDate,.Shipments.DeliveryDate)) as AverageDate
 where DeliveryDate between DATEADD("m",-6, GETDATE()) and GETDATE() and DeliveryDate is not null
 group by CourierCompany
 order by CourierCompany
+
+
+
+ass- 13 
+
+select Orders.OrderID, OrderDate,IsClosed,
+Customers.Name as customerName,ShippingAddress,customers.Email,customers.Phone,City,state,Country,Pincode,
+Employees.Name as employeename from  
+
+Orders 
+join Customers on Orders.CustomerID = Customers.CustomerID
+left join Employees on Orders.EmployeeID = Employees.EmployeeID
+
+where Orders.EmployeeID is null
  
  
  Ass -19
