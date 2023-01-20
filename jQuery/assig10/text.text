@@ -84,6 +84,10 @@ SELECT Customers.CustomerID
   join ProductSuppliers on OrderItems.ProductSupplierID = ProductSuppliers.ProductSupplierID
   join Products on ProductSuppliers.ProductID = Products.ProductID 
   where OrderDate between DATEADD("M", -6, GETDATE()) AND GETDATE() and Customers.CustomerID in (1,2,8)
+  
+  
+  
+
 
 
 ass 24
@@ -99,3 +103,13 @@ SELECT Orders.CustomerID,
   join ShipmentItems on OrderItems.OrderItemID = ShipmentItems.OrderItemID
   join Shipments on ShipmentItems.ShipmentID = Shipments.ShipmentID
   where  DeliveryDate between DATEADD("M", -6, GETDATE()) AND GETDATE() and Orders.CustomerID in (1,2,18) and Products.ProductID =206 
+  
+  
+  
+  
+  ass32
+  SELECT min(Employees.Name) as 'employee name'
+	,count([OrderID]) as 'ordercount'
+  FROM [dbo].[Orders] join Employees on Orders.EmployeeID = Employees.EmployeeID where Orders.IsClosed = 0  group by Employees.EmployeeID
+  order by  count([OrderID])
+
