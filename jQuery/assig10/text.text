@@ -165,4 +165,47 @@ SELECT min(Employees.Name) as 'employee name'
 	,count([OrderID]) as 'ordercount'
   FROM [dbo].[Orders] join Employees on Orders.EmployeeID = Employees.EmployeeID where Orders.IsClosed = 0  group by Employees.EmployeeID
   order by  count([OrderID])
+  
+  
+  
+  
+  
+  
+  
+  sqlass48
+  
+  
+  
+  
+  create FUNCTION CustomersIDcalc(@Mnth int, @Yr int)
+returns int
+as 
+begin
+  DECLARE @EMPID INT;
+
+		
+			
+			SELECT @EMPID=Orders.CustomerID  from OrderItems join Orders on OrderItems.OrderID = Orders.OrderID
+ 
+			join Customers on Orders.CustomerID = Customers.CustomerID 
+			join ProductSuppliers on OrderItems.ProductSupplierID = ProductSuppliers.ProductSupplierID
+			join Products on ProductSuppliers.ProductID = Products.ProductID where month(Orders.OrderDate) = @Mnth and year(Orders.OrderDate) = @Yr 
+			group by Orders.CustomerID
+			
+	return @EMPID
+	end
+	 
+
+	 
+
+	 SELECT dbo. CustomersIDcalc(12,2022) as 'Customer of the month', sum(OrderItems.Quantity * Products.Rate) as OrderValue 
+			from OrderItems join Orders on OrderItems.OrderID = Orders.OrderID
+ 
+			join Customers on Orders.CustomerID = Customers.CustomerID 
+			join ProductSuppliers on OrderItems.ProductSupplierID = ProductSuppliers.ProductSupplierID
+			join Products on ProductSuppliers.ProductID = Products.ProductID where month(Orders.OrderDate) = 12 and year(Orders.OrderDate) = 2022 
+			group by Orders.CustomerID order by OrderValue desc
+
+
+	
 
