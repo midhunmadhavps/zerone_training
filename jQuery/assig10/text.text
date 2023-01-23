@@ -220,23 +220,7 @@ begin
   join Customers on Customers.CustomerID = Orders.CustomerID
   where  OrderDate between DATEADD("m",-6,GETDATE()) and GETDATE() and Suppliers.SupplierID=3
   group by Customers.CustomerID
-ass-51
-alter Function CustomersOfMonth(@Mnth int, @Yr int)
-returns int
-as 
-begin
- DECLARE @Customers INT;
-SELECT @Customers=Customers.CustomerID  from Products 
-join ProductSuppliers on Products.ProductID = ProductSuppliers.ProductID
-join OrderItems on ProductSuppliers.ProductSupplierID = OrderItems.ProductSupplierID
-join Orders on OrderItems.OrderID = Orders.OrderID
-join Customers on Orders.CustomerID = Customers.CustomerID
-where  @Mnth=month(Orders.OrderDate)  and  @Yr=year(Orders.OrderDate)  and Products.Rate>500
-group by Customers.CustomerID
-return @Customers
-end
---Execution
-select dbo.CustomersOfMonth(10,2022) as 'Customers of the month'
+
 
 51 new ass sql
 
