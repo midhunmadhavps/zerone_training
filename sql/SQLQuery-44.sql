@@ -41,3 +41,25 @@ OrderDate between DATEADD("m",-1, GETDATE()) and  GETDATE()
 group by Products.Name
 
 
+44-modifiy
+Select '1 to 1000' as Range,Count(Orders.OrderID) as 'OrderCount'
+	from Orders join OrderItems on Orders.OrderID = OrderItems.OrderID
+	join ProductSuppliers on OrderItems.ProductSupplierID = ProductSuppliers.ProductSupplierID
+	join Products on ProductSuppliers.ProductID = Products.ProductID
+	where Products.Rate between 1 and 1000 and OrderDate between DATEADD("m",-6,Getdate()) and GETDATE() 
+	group by  ProductSuppliers.SupplierID
+	union all
+	Select '1000 to 5000'as Range,Count(Orders.OrderID) as 'OrderCount'
+	from Orders join OrderItems on Orders.OrderID = OrderItems.OrderID
+	join ProductSuppliers on OrderItems.ProductSupplierID = ProductSuppliers.ProductSupplierID
+	join Products on ProductSuppliers.ProductID = Products.ProductID
+	where Products.Rate between 1001 and 5000 and OrderDate between DATEADD("m",-6,Getdate()) and GETDATE() 
+	group by ProductSuppliers.SupplierID
+	union all
+	Select '>5000'as Range,Count(Orders.OrderID) as 'OrderCount'
+	from Orders join OrderItems on Orders.OrderID = OrderItems.OrderID
+	join ProductSuppliers on OrderItems.ProductSupplierID = ProductSuppliers.ProductSupplierID
+	join Products on ProductSuppliers.ProductID = Products.ProductID
+	where Products.Rate >5000 and OrderDate between DATEADD("m",-6,Getdate()) and GETDATE() 
+	group by ProductSuppliers.SupplierID
+	     
