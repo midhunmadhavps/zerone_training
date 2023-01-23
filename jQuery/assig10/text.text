@@ -207,5 +207,17 @@ begin
 			group by Orders.CustomerID order by OrderValue desc
 
 
-	
+	Ass-31
+	SELECT min(Customers.Name) as 'Customer Name'
+,min(Customers.Email) as 'Customer email'
+,min(Products.Name) as 'Product Name'
+,min(Suppliers.name) as 'Supplier name'
+  FROM [dbo].[Products]
+  join ProductSuppliers on ProductS.ProductID = ProductSuppliers.ProductID
+  join Suppliers on ProductSuppliers.SupplierID = Suppliers.SupplierID
+  join OrderItems on OrderItems.ProductSupplierID = ProductSuppliers.ProductSupplierID
+  join Orders on Orders.OrderID = OrderItems.OrderID
+  join Customers on Customers.CustomerID = Orders.CustomerID
+  where  OrderDate between DATEADD("m",-6,GETDATE()) and GETDATE() and Suppliers.SupplierID=3
+  group by Customers.CustomerID
 
