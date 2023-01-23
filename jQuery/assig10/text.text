@@ -238,3 +238,18 @@ end
 --Execution
 select dbo.CustomersOfMonth(10,2022) as 'Customers of the month'
 
+51 new ass sql
+
+create function Cus_Month(@prate float,@month int,@year int) 
+Returns Table
+as 
+Return (SELECT Customers.CustomerID  from Products 
+join ProductSuppliers on Products.ProductID = ProductSuppliers.ProductID
+join OrderItems on ProductSuppliers.ProductSupplierID = OrderItems.ProductSupplierID
+join Orders on OrderItems.OrderID = Orders.OrderID
+join Customers on Orders.CustomerID = Customers.CustomerID
+where  @month=month(Orders.OrderDate)  and @year=year(Orders.OrderDate)  and Products.Rate>@prate
+group by Customers.CustomerID
+)
+
+--select * from Cus_Month(9000,12,2022)
