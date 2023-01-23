@@ -12,9 +12,9 @@ select
 max(Customers.CustomerID) as 'Customer id',
 min(Orders.OrderID) as 'order Id', 
 min(Orders.OrderDate) as 'OrderDates' 
-from Customers join Orders on Customers.CustomerID = Orders.CustomerID
+from Customers left join Orders on Customers.CustomerID = Orders.CustomerID
 
-where OrderDate between DATEADD("m",-1, GETDATE()) and  GETDATE()
 group by Customers.CustomerID
-having 
+having MAX(Orders.OrderDate)<DATEADD("M" ,-6, GETDATE())
+
  
