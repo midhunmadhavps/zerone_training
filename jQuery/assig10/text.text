@@ -1,3 +1,5 @@
+https://www.youtube.com/watch?v=Qu3E-oncF3g sp 1
+https://www.youtube.com/watch?v=bldBshxuhMk sp 2
 
 SELECT Count(Products.ProductID) as 'Products'
       ,min(Suppliers.Name) as 'Supplier Name'
